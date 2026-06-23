@@ -14,33 +14,36 @@ const scissors = document.querySelector('#scissors')
 
 const reset = document.querySelector('#reset')
 
+const resultDisplay = document.querySelector('#result-display')
+console.log(resultDisplay)
 /*----------- Event Listeners -----------*/
 choices.addEventListener('click', function(event){
     userChoice = event.target.id
 
     if (userChoice === 'rock'){
-        paper.setAttribute('disabled', 'disabled')
-        scissors.setAttribute('disabled', 'disabled')
+        paper.disabled = true
+        scissors.disabled = true
     } else if (userChoice === 'paper') {
-        rock.setAttribute('disabled', 'disabled')
-        scissors.setAttribute('disabled', 'disabled')
+        rock.disabled = true
+        scissors.disabled = true
     } else {
-        rock.setAttribute('disabled', 'disabled')
-        paper.setAttribute('disabled', 'disabled')
+        rock.disabled = true
+        paper.disabled = true
     }
 
     // computer makes a choice
     let randomIndex = Math.floor(Math.random() * 3)
     computerChoice = choicesArr[randomIndex]
+    resultDisplay.textContent = `Computer chose: ${computerChoice}.`
 
     console.log('userChoice: ', userChoice)
     console.log('computerChoice: ', computerChoice)
 })
 
 reset.addEventListener('click', function(){
-    paper.removeAttribute('disabled')
-    scissors.removeAttribute('disabled')
-    rock.removeAttribute('disabled')
+    paper.disabled = false
+    scissors.disabled = false
+    rock.disabled = false
 })
 
 /*-------------- Functions --------------*/
